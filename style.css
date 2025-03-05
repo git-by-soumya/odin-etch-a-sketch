@@ -3,3 +3,13 @@
     width: 10px;
     border: 1px solid red;
 }
+
+.container, 
+.secondary-container {
+    display: flex;
+    gap: 5px;
+}
+
+.container {
+    flex-direction: column;
+}
