@@ -27,3 +27,9 @@ function changeColorOnHover(event) {
 
 const doc = document;
 doc.addEventListener("mouseover", changeColorOnHover);
+
+const btn = document.querySelector(".btn");
+btn.addEventListener("click", () => {
+    const size = +prompt(
+        "Enter the number of squares per side for the new grid:");
+});
