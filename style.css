@@ -4,6 +4,10 @@
     border: 1px solid red;
 }
 
+.div-trail {
+    background-color: blueviolet;
+}
+
 .container, 
 .secondary-container {
     display: flex;
