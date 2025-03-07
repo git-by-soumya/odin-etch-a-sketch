@@ -29,6 +29,7 @@ function handleTrailEvent(event) {
     const target = event.target;
     if(target.className === "lowestDivUnit") {
         target.style.backgroundColor = getBackgroundColorString();
+        target.style.opacity = `${+target.style.opacity + 0.1}`;
     }
 }
 
