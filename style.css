@@ -1,18 +1,20 @@
-.div-class {
-    height: 10px;
-    width: 10px;
-    border: 1px solid red;
-}
-
-.div-trail {
-    background-color: blueviolet;
-}
-
-.container, 
-.secondary-container {
-    display: flex;
-}
-
 .container {
+    height: 80vmin;
+    width: 80vmin;
+    border: 1px solid red;
+    display: flex;
     flex-direction: column;
+}
+
+.containerTwo {
+    display: flex;
+    flex-grow: 1;
+}
+
+.lowestDivUnit {
+    flex-grow: 1;
+}
+
+.trailColored {
+    background-color: blueviolet;
 }

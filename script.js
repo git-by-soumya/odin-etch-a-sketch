@@ -1,35 +1,68 @@
-function divGridCreator() {
-    const container = document.querySelector(".container");
+const container = document.querySelector(".container");
 
-    for(let i = 0; i < 16; i++) {
-        const secondaryContainer = document.createElement("div");
-        secondaryContainer.classList.toggle("secondary-container")
-    
-        for(let j = 0; j < 16; j++) {
+function createGrid(numberOfSquaresPerSide = 16) {
+    for(let i = 0; i < numberOfSquaresPerSide; i++) {
+        const containerTwo = document.createElement("div");
+        containerTwo.className = "containerTwo";
+        for(let j = 0; j < numberOfSquaresPerSide; j++) {
             const div = document.createElement("div");
-            div.classList.toggle("div-class");
-    
-            secondaryContainer.appendChild(div);
+            div.className = "lowestDivUnit";
+            containerTwo.appendChild(div);
         }
-    
-        container.appendChild(secondaryContainer);
+        container.appendChild(containerTwo);
     }
 }
 
-divGridCreator();
+createGrid();
 
-function changeColorOnHover(event) {
+function handleTrailEvent(event) {
     const target = event.target;
-    if(target.classList[0] === "div-class") {
-        target.classList.add("div-trail");
+    if(target.className === "lowestDivUnit") {
+        target.classList.add("trailColored");
     }
 }
 
-const doc = document;
-doc.addEventListener("mouseover", changeColorOnHover);
+const documentRef = document;
 
-const btn = document.querySelector(".btn");
-btn.addEventListener("click", () => {
-    const size = +prompt(
-        "Enter the number of squares per side for the new grid:");
-});
+documentRef.addEventListener("mouseover", handleTrailEvent);
+
+function validateInput(input) {
+    if(input <= 100 && input >= 1) {
+        return true;
+    }
+    else if(input === NaN) {
+        return false;
+    }
+    else {
+        return false;
+    }
+}
+
+function removeCurrentGrid() {
+    const containerTwoRefs = document.querySelectorAll(".containerTwo");
+    for(const ref of containerTwoRefs) {
+        container.removeChild(ref);
+    }
+}
+
+function handleButtonClick(event) {
+    const target = event.target;
+    if(target.className === "btn") {
+        let numberOfSquaresPerSide = 
+        +prompt(
+            "Enter the number of squares per side for the new grid (1-100):"
+            , "16"
+        );
+        let isValidInput = validateInput(numberOfSquaresPerSide);
+        if(isValidInput === true) {
+            removeCurrentGrid();
+            createGrid(numberOfSquaresPerSide);
+        }
+        else {
+            return;
+        }        
+    }
+}
+
+documentRef.addEventListener("click", handleButtonClick);
+
