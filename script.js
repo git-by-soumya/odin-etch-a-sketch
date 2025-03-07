@@ -15,10 +15,20 @@ function createGrid(numberOfSquaresPerSide = 16) {
 
 createGrid();
 
+const RGB_VALUE_UPPER_LIMIT = 255;
+
+function getBackgroundColorString() {
+    let redValue = Math.random() * (RGB_VALUE_UPPER_LIMIT + 1);
+    let greenValue = Math.random() * (RGB_VALUE_UPPER_LIMIT + 1);
+    let blueValue = Math.random() * (RGB_VALUE_UPPER_LIMIT + 1);
+    let string = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+    return string;
+}
+
 function handleTrailEvent(event) {
     const target = event.target;
     if(target.className === "lowestDivUnit") {
-        target.classList.add("trailColored");
+        target.style.backgroundColor = getBackgroundColorString();
     }
 }
 
